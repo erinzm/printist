@@ -19,8 +19,8 @@ def _POST_queue():
 """
 Delete a part from the queue by its queueid
 """
-@queue.route('/queue/<id:int>',  methods=['DELETE'])
-def _DELETE_queue_part(idf):
+@queue.route('/queue/<name>',  methods=['DELETE'])
+def _DELETE_queue_part(name):
   abort(501)
 
 """
