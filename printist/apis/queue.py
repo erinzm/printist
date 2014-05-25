@@ -1,4 +1,4 @@
-from flask import Blueprint, abort, jsonify
+from flask import Blueprint, abort, jsonify, current_app
 
 queue = Blueprint('queue', __name__)
 
