@@ -1,1 +1,0 @@
-DEFAULT_UPLOAD_FOLDER = './files/'
