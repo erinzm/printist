@@ -16,6 +16,14 @@ def _GET_files():
   return jsonify(files = os.listdir('./files'))
 
 """
+Get a specific file
+"""
+@files.route('/file/<filename>')
+def _GET_file(filename):
+  f = open(os.path.join('./files', filename))
+  return f.read()
+
+"""
 Post a file up to the service
 """
 @files.route('/file', methods=['POST'])
@@ -30,8 +38,8 @@ def _POST_file():
 """
 Update a file
 """
-@files.route('/file/<name>', methods=['PUT'])
-def _PUT_file():
+@files.route('/file/<filename>', methods=['PUT'])
+def _PUT_file(filename):
   f = request.files['file']
   if f and allowed_file(f.filename):
     filename = secure_filename(f.filename)
@@ -42,6 +50,7 @@ def _PUT_file():
 """
 Delete a file
 """
-@files.route('/file/<name>', methods=['DELETE'])
-def _DELETE_file():
-  abort(501)
+@files.route('/file/<filename>', methods=['DELETE'])
+def _DELETE_file(filename):
+  os.remove(os.path.join('./files', filename))
+  return jsonify({'success': True}), 204
