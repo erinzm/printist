@@ -13,7 +13,7 @@ Grab a list of *all* the filenames!
 """
 @files.route('/file', methods=['GET'])
 def _GET_files():
-  return jsonify(os.listdir('./files'))
+  return jsonify(files = os.listdir('./files'))
 
 """
 Post a file up to the service
@@ -32,7 +32,12 @@ Update a file
 """
 @files.route('/file/<name>', methods=['PUT'])
 def _PUT_file():
-  abort(501)
+  f = request.files['file']
+  if f and allowed_file(f.filename):
+    filename = secure_filename(f.filename)
+    f.save(os.path.join('./files', filename))
+    return jsonify({'success': True}), 201
+  return jsonify({'success': False}), 403
 
 """
 Delete a file
