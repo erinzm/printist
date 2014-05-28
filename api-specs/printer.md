@@ -7,3 +7,5 @@ Printer API
 * ~~GET `/printer/bed/temp`: Get the temperature of the heated bed~~
 * POST `/printer/print`: Print `file` in JSON request on printer.
 * POST `/printer/print/stop`: Stop print.
+* GET `/printer/lock`: Is the printer locked?
+* DELETE `/printer/lock`: Delete the printer's lock.

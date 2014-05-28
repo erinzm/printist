@@ -13,7 +13,7 @@ Grab a list of *all* the filenames!
 """
 @files.route('/file', methods=['GET'])
 def _GET_files():
-  return jsonify(files = os.listdir(current_app.config['FILE_UPLOAD_LOCATION']))
+  return jsonify(files = os.listdir(current_app.config['FILE_UPLOAD_LOCATION'])), 200
 
 """
 Get a specific file
@@ -21,7 +21,7 @@ Get a specific file
 @files.route('/file/<filename>')
 def _GET_file(filename):
   f = open(os.path.join(current_app.config['FILE_UPLOAD_LOCATION'], secure_filename(filename)))
-  return f.read()
+  return f.read(), 200
 
 """
 Post a file up to the service
