@@ -38,13 +38,13 @@ def _POST_stop():
 """
 Is there a lock?
 """
-@printer.route('/printer/print/lock', methods=['GET'])
+@printer.route('/printer/lock', methods=['GET'])
 def _GET_lock():
   return jsonify(locked=False)
 
 """
 Remove a lock
 """
-@printer.route('/printer/print/lock', methods=['DELETE'])
+@printer.route('/printer/lock', methods=['DELETE'])
 def _DELETE_lock():
   abort(501)
