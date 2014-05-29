@@ -1,2 +1,0 @@
-from printist import printist
-printist.run(debug=True)
