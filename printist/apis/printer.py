@@ -34,3 +34,17 @@ Not implemented.
 @printer.route('/printer/print', methods=['POST'])
 def _POST_stop():
   abort(501)
+
+"""
+Is there a lock?
+"""
+@printer.route('/printer/print/lock', methods=['GET'])
+def _GET_lock():
+  return jsonify(locked=False)
+
+"""
+Remove a lock
+"""
+@printer.route('/printer/print/lock', methods=['DELETE'])
+def _DELETE_lock():
+  abort(501)
